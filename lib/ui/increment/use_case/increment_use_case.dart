@@ -15,6 +15,6 @@ class IncrementUseCase with StarterBloc<IncrementUseCaseOutput> {
   }
 
   _presentState() {
-    streamAdd(PresentState(IncrementStateModel(counterValue: _counter)));
+    emit(PresentState(IncrementStateModel(counterValue: _counter)));
   }
 }

@@ -12,9 +12,10 @@ class IncrementScene extends StatelessWidget {
       bloc: _presenter,
       builder: (context, snapshot) {
         if (!snapshot.hasData) return Container();
-        final event = snapshot.data;
+        final event = snapshot.data!;
 
-        if (event is ShowModel) {
+        switch(event) {
+          case  ShowModel():
           return Scaffold(
             appBar: AppBar(
               title: Text('Increment (MVP)'),
@@ -28,7 +29,7 @@ class IncrementScene extends StatelessWidget {
                   ),
                   Text(
                     event.viewModel.counterValue,
-                    style: Theme.of(context).textTheme.headline4,
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ],
               ),
@@ -39,9 +40,6 @@ class IncrementScene extends StatelessWidget {
               child: Icon(Icons.add),
             ),
           );
-        } else {
-          assert(false, "unknown event $event");
-          return null;
         }
       },
     );

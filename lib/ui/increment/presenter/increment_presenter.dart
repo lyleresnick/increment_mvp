@@ -9,13 +9,15 @@ class IncrementPresenter with StarterBloc<IncrementPresenterOutput> {
 
   IncrementPresenter(this._useCase) {
     _useCase.stream.listen((event) {
-      if (event is PresentState) {
-        streamAdd(ShowModel(IncrementViewModel.fromState(event.model)));
-      } else {
-        assert(false, "unknown event $event");
-        return null;
+      switch (event) {
+        case PresentState():
+          emit(ShowModel(IncrementViewModel.fromState(event.model)));
       }
     });
+  }
+
+  void eventIncrementCounter() {
+    _useCase.eventIncrementCounter();
   }
 
   void dispose() {
@@ -23,7 +25,4 @@ class IncrementPresenter with StarterBloc<IncrementPresenterOutput> {
     super.dispose();
   }
 
-  void eventIncrementCounter() {
-    _useCase.eventIncrementCounter();
-  }
 }
