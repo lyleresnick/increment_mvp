@@ -5,7 +5,7 @@ import 'package:increment_mvp/ui/increment/view/increment_scene.dart';
 class IncrementAssembly {
   final IncrementScene scene;
 
-  IncrementAssembly._({this.scene});
+  IncrementAssembly._({required this.scene});
 
   factory IncrementAssembly() {
     final useCase = IncrementUseCase();
