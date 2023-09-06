@@ -1,4 +1,4 @@
-package comm.cellarpoint.increment_mvp
+package com.example.increment_mvp
 
 import io.flutter.embedding.android.FlutterActivity
 
